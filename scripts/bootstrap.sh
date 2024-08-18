@@ -23,7 +23,7 @@ fail() {
 
 # Link file
 link_file() {
-    if ln -s "$1" "$2"; then
+    if ln -sf "$1" "$2"; then
         success "Linked $1 to $2"
     else
         fail "Failed to link $1 to $2"
@@ -40,6 +40,45 @@ install_dotfiles() {
     done
 }
 
-# Run the installation
+# Install packages using Brewfile
+install_packages() {
+    echo "› brew bundle"
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        # macOS
+        echo "Installing packages for macOS..."
+        if ! command -v brew > /dev/null 2>&1; then
+            echo "Homebrew is not installed. Please install Homebrew first."
+            exit 1
+        fi
+        brew bundle --file=homebrew/Brewfile-macos
+    elif [[ "$OSTYPE" == "linux"* ]]; then
+        # Linux
+        echo "Installing packages for Linux..."
+        if ! command -v brew > /dev/null 2>&1; then
+            echo "Homebrew is not installed. Please install Homebrew first."
+            exit 1
+        fi
+        brew bundle --file=homebrew/Brewfile-linux
+    else
+        echo "Unsupported OS: $OSTYPE"
+        exit 1
+    fi
+}
+
+# Find and run installers
+run_installers() {
+    # Find the installers and run them iteratively, exclude scripts directory
+    find . -name 'install.sh' -not -path './scripts/*' -print0 | while IFS= read -r -d '' installer; do
+        echo "Running installer: $installer"
+        if ! sh -c "$installer"; then
+            fail "Failed to run installer $installer"
+        fi
+    done
+}
+
+# Execute functions
+run_installers
+install_packages
 install_dotfiles
 
+echo "Setup completed successfully."
