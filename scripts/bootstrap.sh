@@ -1,9 +1,7 @@
 #!/bin/bash
 set -e
 
-# Change directory to the parent directory of this script
 # Set script parent directory as DOTFILES_ROOT
-cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd -P)
 
 # Print formatted info message to stdout
