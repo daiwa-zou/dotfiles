@@ -40,7 +40,7 @@
     default = simple
 
 [credential]
-    helper = osxkeychain
+    helper = cache
 
 [init]
     defaultBranch = main
