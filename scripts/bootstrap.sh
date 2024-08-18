@@ -22,8 +22,8 @@ fail() {
 }
 
 setup_gitconfig () {
-  local config_file="git/gitconfig.local.symlink"
-  local example_file="git/gitconfig.local.symlink.example"
+  local config_file="git/gitconfig.local.lnk"
+  local example_file="git/gitconfig.local.lnk.example"
   
   if [ ! -f "$config_file" ]; then
     echo "Setting up gitconfig..."
