@@ -211,8 +211,6 @@ install_oh_my_zsh() {
         return 1
     fi
 }
-  fi
-}
 
 # Execute functions
 run_installers
