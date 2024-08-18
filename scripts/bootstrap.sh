@@ -22,8 +22,11 @@ fail() {
 
 # link file
 link_file() {
-	ln -s "$1" "$2"
-	success "linked $1 to $2"
+    if ln -s "$1" "$2"; then
+        success "Linked $1 to $2"
+    else
+        fail "Failed to link $1 to $2"
+    fi
 }
 
 # find all files with .lnk extension and link them to user home directory
