@@ -43,7 +43,6 @@ setopt APPEND_HISTORY           # Append new history entries to HISTFILE
 setopt INC_APPEND_HISTORY       # Incrementally append history and share across sessions
 setopt HIST_IGNORE_ALL_DUPS     # Ignore duplicate history entries
 setopt HIST_REDUCE_BLANKS       # Remove extra blanks from history entries
-setopt COMPLETE_ALIAS           # Expand aliases after completion
 
 # Key bindings
 bindkey '^[^[[D' backward-word     # Ctrl-Left Arrow to move backward by word
