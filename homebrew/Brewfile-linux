@@ -1,0 +1,7 @@
+tap 'homebrew/bundle'
+
+brew 'git'
+brew 'make'
+brew 'unzip'
+brew 'gcc'
+brew 'ripgrep'
