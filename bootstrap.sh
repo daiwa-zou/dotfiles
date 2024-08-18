@@ -64,14 +64,52 @@ setup_gitconfig () {
   fi
 }
 
-# Link file
+# Function to create a symbolic link with overwrite handling
 link_file() {
-    if ln -sf "$1" "$2"; then
-        success "Linked $1 to $2"
+    local source="$1"
+    local destination="$2"
+
+    # Check if the source file exists
+    if [ ! -e "$source" ]; then
+        fail "Source file $source does not exist"
+        return 1
+    fi
+
+    # Check if the destination directory exists
+    local dest_dir
+    dest_dir=$(dirname "$destination")
+    if [ ! -d "$dest_dir" ]; then
+        fail "Destination directory $dest_dir does not exist"
+        return 1
+    fi
+
+    # If the destination exists and is not a symbolic link, remove it
+    if [ -e "$destination" ] && [ ! -L "$destination" ]; then
+        rm -rf "$destination"
+        if [ $? -ne 0 ]; then
+            fail "Failed to remove existing file $destination"
+            return 1
+        fi
+    fi
+
+    # Create the symbolic link
+    if ln -sf "$source" "$destination"; then
+        success "Linked $source to $destination"
     else
-        fail "Failed to link $1 to $2"
+        fail "Failed to link $source to $destination"
     fi
 }
+
+# Function to print success messages
+success() {
+    echo "Success: $1"
+}
+
+# Function to print failure messages
+fail() {
+    echo "Error: $1" >&2
+}
+
 
 # Find all files with .lnk extension and link them to user home directory
 install_dotfiles() {
@@ -141,29 +179,11 @@ set_zsh_as_default() {
     fi
 }
 
-# Function to install Oh My Zsh
-install_oh_my_zsh() {
-    if [ ! -d "$HOME/.oh-my-zsh" ]; then
-        echo "Installing Oh My Zsh..."
-        if command -v curl > /dev/null 2>&1; then
-            sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-        elif command -v wget > /dev/null 2>&1; then
-            sh -c "$(wget --quiet https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-        else
-            echo "Error: Neither curl nor wget is installed. Please install one of them first."
-            exit 1
-        fi
-    else
-        echo "Oh My Zsh is already installed."
-    fi
-}
-
 # Execute functions
 run_installers
 install_packages
 setup_gitconfig
 install_dotfiles
-install_oh_my_zsh
 if ! check_zsh_installed; then
     # Set zsh as the default shell
     set_zsh_as_default
