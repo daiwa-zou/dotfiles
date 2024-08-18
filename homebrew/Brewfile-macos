@@ -1,1 +1,9 @@
+# Brewfile for macOS
+tap 'homebrew/bundle'
 
+brew 'git'
+brew 'make'
+brew 'unzip'
+brew 'gcc'
+brew 'ripgrep'
+brew 'xclip'
