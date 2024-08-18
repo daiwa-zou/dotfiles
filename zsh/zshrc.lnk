@@ -11,6 +11,13 @@ fi
 
 # Load Oh My Zsh theme and plugins
 ZSH_THEME="random"
+ZSH_THEME_RANDOM_CANDIDATES=(
+  "fino-time"
+  "humza"
+  "lambda"
+  "linuxonly"
+  "rkj-repos"
+)
 
 plugins=(
   brew
@@ -50,9 +57,6 @@ done
 
 # Clear the config_files array
 unset config_files
-
-# Enhanced User Experience
-
 
 # Set your preferred editor
 export EDITOR='nvim'
