@@ -21,6 +21,51 @@ fail() {
     exit 1
 }
 
+setup_gitconfig () {
+  local config_file="git/gitconfig.local.symlink"
+  local example_file="git/gitconfig.local.symlink.example"
+  
+  if [ ! -f "$config_file" ]; then
+    echo "Setting up gitconfig..."
+
+    # Determine credential helper based on OS
+    local git_credential="cache"
+    if [ "$(uname -s)" = "Darwin" ]; then
+      git_credential="osxkeychain"
+    fi
+
+    # Prompt user for Git author information
+    echo -n " - What is your GitHub author name? "
+    read -r git_authorname
+    if [ -z "$git_authorname" ]; then
+      echo "Error: Author name cannot be empty." >&2
+      return 1
+    fi
+
+    echo -n " - What is your GitHub author email? "
+    read -r git_authoremail
+    if [ -z "$git_authoremail" ]; then
+      echo "Error: Author email cannot be empty." >&2
+      return 1
+    fi
+
+    # Generate the git configuration file
+    sed -e "s/AUTHORNAME/$git_authorname/g" \
+        -e "s/AUTHOREMAIL/$git_authoremail/g" \
+        -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" \
+        "$example_file" > "$config_file"
+
+    if [ $? -eq 0 ]; then
+      echo "Git configuration setup completed successfully."
+    else
+      echo "Error: Failed to generate git configuration." >&2
+      return 1
+    fi
+  else
+    echo "Git configuration already set up."
+  fi
+}
+
 # Link file
 link_file() {
     if ln -sf "$1" "$2"; then
@@ -101,6 +146,7 @@ set_zsh_as_default() {
 # Execute functions
 run_installers
 install_packages
+setup_gitconfig
 install_dotfiles
 if ! check_zsh_installed; then
     # Set zsh as the default shell
