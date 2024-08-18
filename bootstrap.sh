@@ -141,11 +141,29 @@ set_zsh_as_default() {
     fi
 }
 
+# Function to install Oh My Zsh
+install_oh_my_zsh() {
+    if [ ! -d "$HOME/.oh-my-zsh" ]; then
+        echo "Installing Oh My Zsh..."
+        if command -v curl > /dev/null 2>&1; then
+            sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+        elif command -v wget > /dev/null 2>&1; then
+            sh -c "$(wget --quiet https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+        else
+            echo "Error: Neither curl nor wget is installed. Please install one of them first."
+            exit 1
+        fi
+    else
+        echo "Oh My Zsh is already installed."
+    fi
+}
+
 # Execute functions
 run_installers
 install_packages
 setup_gitconfig
 install_dotfiles
+install_oh_my_zsh
 if ! check_zsh_installed; then
     # Set zsh as the default shell
     set_zsh_as_default
