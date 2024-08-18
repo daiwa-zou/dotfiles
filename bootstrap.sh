@@ -193,14 +193,14 @@ install_oh_my_zsh() {
 
     # Attempt to install using curl or wget
     if command -v curl > /dev/null 2>&1; then
-        if curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh --unattended | sh; then
+        if curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh -s -- --unattended; then
             echo "Oh My Zsh installed successfully."
         else
             echo "Failed to install Oh My Zsh using curl."
             return 1
         fi
     elif command -v wget > /dev/null 2>&1; then
-        if wget --quiet https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh --unattended -O - | sh; then
+        if wget --quiet https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O - | sh -s -- --unattended; then
             echo "Oh My Zsh installed successfully."
         else
             echo "Failed to install Oh My Zsh using wget."
@@ -210,6 +210,8 @@ install_oh_my_zsh() {
         echo "Error: Neither curl nor wget is installed. Please install one of them first."
         return 1
     fi
+}
+  fi
 }
 
 # Execute functions
