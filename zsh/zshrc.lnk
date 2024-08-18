@@ -10,13 +10,16 @@ if [[ -f ~/.localrc ]]; then
 fi
 
 # Load Oh My Zsh theme and plugins
-ZSH_THEME="robbyrussell"
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-completions history-substring-search git-extras zsh-nvm)
-
-# Initialize Oh My Zsh
-source $ZSH/oh-my-zsh.sh
-
-# Dotfiles Configuration
+ZSH_THEME="awesomepanda"
+plugins=(
+  brew
+  hitchhiker
+  colorize
+  common-aliases
+  extract
+  git
+  tmux
+)
 
 # Collect all zsh configuration files from the dotfiles directory
 typeset -U config_files
@@ -92,3 +95,6 @@ bindkey "^[[B" down-line-or-beginning-search # Down arrow key
 # For example, you can set custom aliases here or in $ZSH_CUSTOM/aliases.zsh
 # alias zshconfig="vim ~/.zshrc"
 # alias ohmyzsh="vim ~/.oh-my-zsh"
+
+# Initialize Oh My Zsh
+source $ZSH/oh-my-zsh.sh
