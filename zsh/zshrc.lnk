@@ -1,9 +1,6 @@
 # Set the path to the dotfiles directory
 export ZSH=$HOME/.dotfiles
 
-# Set the path to the projects directory
-export PROJECTS=~/Code
-
 # Source environment variables from ~/.localrc if it exists
 if [[ -f ~/.localrc ]]; then
   source ~/.localrc
