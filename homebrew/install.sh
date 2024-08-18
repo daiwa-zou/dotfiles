@@ -2,23 +2,37 @@
 #
 # Homebrew
 #
-# This installs some of the common dependencies needed (or at least desired)
-# using Homebrew.
+# This installs Homebrew on macOS or Linux if it's not already installed.
 
-# Check for Homebrew
-if test ! $(which brew)
-then
-  echo "  Installing Homebrew"
+# Function to check if Homebrew is installed
+check_brew() {
+  command -v brew >/dev/null 2>&1
+}
 
-  # Install the correct homebrew for each OS type
-  if test "$(uname)" = "Darwin"
-  then
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  elif test "$(expr substr $(uname -s) 1 5)" = "Linux"
-  then
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
+# Function to install Homebrew
+install_homebrew() {
+  echo "Installing Homebrew..."
+
+  # Install Homebrew for macOS
+  if [ "$(uname)" = "Darwin" ]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  
+  # Install Homebrew (Linuxbrew) for Linux
+  elif [ "$(uname)" = "Linux" ]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  
+  else
+    echo "Unsupported OS: $(uname)"
+    exit 1
   fi
+}
 
+# Main script execution
+if ! check_brew; then
+  install_homebrew
+else
+  echo "Homebrew is already installed."
 fi
 
 exit 0
+
