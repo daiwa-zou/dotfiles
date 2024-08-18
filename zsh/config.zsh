@@ -18,8 +18,8 @@ elif is_linux; then
 fi
 
 # Load custom functions and completion scripts
-fpath=($DOTFILE/functions $fpath)
-autoload -U $DOTFILE/functions/*(:t)
+fpath=($DOTFILES/functions $fpath)
+autoload -U $DOTFILES/functions/*(:t)
 
 # Customize terminal history
 HISTFILE=~/.zsh_history
