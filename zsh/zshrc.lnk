@@ -10,7 +10,8 @@ if [[ -f ~/.localrc ]]; then
 fi
 
 # Load Oh My Zsh theme and plugins
-ZSH_THEME="awesomepanda"
+ZSH_THEME="random"
+
 plugins=(
   brew
   hitchhiker
@@ -20,6 +21,9 @@ plugins=(
   git
   tmux
 )
+
+# Initialize Oh My Zsh
+source $ZSH/oh-my-zsh.sh
 
 # Collect all zsh configuration files from the dotfiles directory
 typeset -U config_files
@@ -49,10 +53,9 @@ unset config_files
 
 # Enhanced User Experience
 
-# Preferred editor for local and remote sessions
-# Uncomment and set your preferred editor
-export EDITOR='nvim'  # For local sessions
-# export EDITOR='mvim' # For remote sessions
+
+# Set your preferred editor
+export EDITOR='nvim'
 
 # Compilation flags
 # Uncomment and set if needed
@@ -67,15 +70,12 @@ bindkey "^[[A" up-line-or-beginning-search # Up arrow key
 bindkey "^[[B" down-line-or-beginning-search # Down arrow key
 
 # Path configuration (customize if needed)
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-
-# Optional: Set a list of themes for random selection
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 # Auto-update settings for Oh My Zsh
 # Uncomment one of the following lines to control auto-update behavior
 # zstyle ':omz:update' mode disabled        # Disable automatic updates
-# zstyle ':omz:update' mode auto           # Auto-update without asking
+zstyle ':omz:update' mode auto           # Auto-update without asking
 # zstyle ':omz:update' mode reminder       # Remind to update when needed
 # zstyle ':omz:update' frequency 13        # Set auto-update frequency
 
@@ -83,18 +83,12 @@ bindkey "^[[B" down-line-or-beginning-search # Down arrow key
 # DISABLE_MAGIC_FUNCTIONS="true"           # Disable magic functions
 # DISABLE_LS_COLORS="true"                 # Disable colors in ls
 # DISABLE_AUTO_TITLE="true"                # Disable auto-setting terminal title
-# ENABLE_CORRECTION="true"                 # Enable command auto-correction
+ENABLE_CORRECTION="true"                 # Enable command auto-correction
 # COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f" # Custom completion waiting dots
 # DISABLE_UNTRACKED_FILES_DIRTY="true"     # Disable marking untracked files as dirty
 # HIST_STAMPS="mm/dd/yyyy"                 # Custom format for command execution time stamp
 
-# Custom folder for Oh My Zsh plugins and themes (if needed)
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Set personal aliases (optional)
-# For example, you can set custom aliases here or in $ZSH_CUSTOM/aliases.zsh
-# alias zshconfig="vim ~/.zshrc"
-# alias ohmyzsh="vim ~/.oh-my-zsh"
-
-# Initialize Oh My Zsh
-source $ZSH/oh-my-zsh.sh
+# Hitchhicker cowsay message
+if command -v hitchhiker_cow > /dev/null 2>&1; then
+    hitchhiker_cow
+fi
