@@ -1,10 +1,4 @@
 #!/bin/sh
-# Use `hub` as our git wrapper:
-#   http://defunkt.github.com/hub/
-hub_path=$(command -v hub)
-if [ -n "$hub_path" ]; then
-  alias git="$hub_path"
-fi
 
 # Pull from the remote repository and prune deleted branches
 alias gl='git pull --prune'
