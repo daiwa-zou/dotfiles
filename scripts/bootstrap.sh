@@ -1,26 +1,27 @@
+#!/bin/bash
 set -e
 
-# change directory into parent directory of this script
-# set script parent directory as DOTFILES_ROOT
+# Change directory to the parent directory of this script
+# Set script parent directory as DOTFILES_ROOT
 cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd -P)
 
-# print formatted info message to stdout
+# Print formatted info message to stdout
 info() {
-	printf "\r  [ \033[00;34m..\033[0m ] $1\n"
+    printf "\r  [ \033[00;34m..\033[0m ] %s\n" "$1"
 }
 
 success() {
-	printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+    printf "\r\033[2K  [ \033[00;32mOK\033[0m ] %s\n" "$1"
 }
 
 fail() {
-	printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
-	echo ''
-	exit
+    printf "\r\033[2K  [\033[0;31mFAIL\033[0m] %s\n" "$1"
+    echo ''
+    exit 1
 }
 
-# link file
+# Link file
 link_file() {
     if ln -s "$1" "$2"; then
         success "Linked $1 to $2"
@@ -29,12 +30,16 @@ link_file() {
     fi
 }
 
-# find all files with .lnk extension and link them to user home directory
+# Find all files with .lnk extension and link them to user home directory
 install_dotfiles() {
-	info 'installing dotfiles'
+    info 'Installing dotfiles'
 
-	for source in $(find "$DOTFILES_ROOT" -maxdepth 2 -name '*.lnk'); do
-		destination="$HOME/.$(basename "${source%.*}")"
-		link_file "$source" "$destionation"
-	done
+    find "$DOTFILES_ROOT" -maxdepth 2 -name '*.lnk' -print0 | while IFS= read -r -d '' source; do
+        destination="$HOME/.$(basename "${source%.*}")"
+        link_file "$source" "$destination"
+    done
 }
+
+# Run the installation
+install_dotfiles
+
