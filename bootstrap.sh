@@ -1,23 +1,10 @@
 #!/bin/bash
 set -e
 
+source lib/helper.sh
+
 # Set script parent directory as DOTFILES_ROOT
 DOTFILES_ROOT=$(pwd -P)
-
-# Print formatted info message to stdout
-info() {
-    printf "\r  [ \033[00;34m..\033[0m ] %s\n" "$1"
-}
-
-success() {
-    printf "\r\033[2K  [ \033[00;32mOK\033[0m ] %s\n" "$1"
-}
-
-fail() {
-    printf "\r\033[2K  [\033[0;31mFAIL\033[0m] %s\n" "$1"
-    echo ''
-    exit 1
-}
 
 setup_gitconfig () {
   local config_file="git/gitconfig.local.lnk"
