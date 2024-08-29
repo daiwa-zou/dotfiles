@@ -87,17 +87,6 @@ link_file() {
     fi
 }
 
-# Function to print success messages
-success() {
-    echo "Success: $1"
-}
-
-# Function to print failure messages
-fail() {
-    echo "Error: $1" >&2
-}
-
-
 # Find all files with .lnk extension and link them to user home directory
 install_dotfiles() {
     info 'Installing dotfiles'
