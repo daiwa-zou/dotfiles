@@ -10,17 +10,13 @@ check_brew() {
 }
 
 # Function to install Homebrew
-install_homebrew() {
-  echo "Installing Homebrew..."
-
-  # Install Homebrew for macOS
+install_package_manager() {
+  # Ensure homebrew for macOS
   if [ "$(uname)" = "Darwin" ]; then
+    echo "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  
-  # Install Homebrew (Linuxbrew) for Linux
-  elif [ "$(uname)" = "Linux" ]; then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  
+  # TODO: Ensure apt-get for linux
+  elif [ "$(uname)" = "Linux" ]; then  
   else
     echo "Unsupported OS: $(uname)"
     exit 1
