@@ -1,10 +1,3 @@
-                
-                  / \__
-                 (    @\___
-                 /         O
-                /   (_____/
-                /_____/ U
-                
 # Print formatted info message to stdout
 info() {
     printf "\r  [ \033[00;34m..\033[0m ] %s\n" "$1"
