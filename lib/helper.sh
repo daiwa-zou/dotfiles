@@ -13,7 +13,6 @@ fail() {
     exit 1
 }
 
-"`. .`"`. .`"`. .`"`. .`"`. .`"`. .`"`. .`"`. .`"`. .`"`. .`
 # Set up github config
 setup_gitconfig () {
   local config_file="git/gitconfig.local.lnk"
