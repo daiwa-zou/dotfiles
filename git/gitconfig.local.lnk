@@ -1,0 +1,5 @@
+[user]
+        name = Daiwa Zou
+        email = daiwa.zou@outlook.com
+[credential]
+        helper = osxkeychain
