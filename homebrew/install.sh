@@ -16,7 +16,6 @@ install_package_manager() {
     echo "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   # TODO: Ensure apt-get for linux
-  elif [ "$(uname)" = "Linux" ]; then  
   else
     echo "Unsupported OS: $(uname)"
     exit 1
