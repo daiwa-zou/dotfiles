@@ -16,15 +16,7 @@ install_packages() {
             echo "Homebrew is not installed. Please install Homebrew first."
             exit 1
         fi
-        brew bundle --file=homebrew/Brewfile-macos
-    elif [[ "$OSTYPE" == "linux"* ]]; then
-        # Linux
-        echo "Installing packages for Linux..."
-        if ! command -v brew > /dev/null 2>&1; then
-            echo "Homebrew is not installed. Please install Homebrew first."
-            exit 1
-        fi
-        brew bundle --file=homebrew/Brewfile-linux
+        brew bundle --file=homebrew/Brewfile
     else
         echo "Unsupported OS: $OSTYPE"
         exit 1
