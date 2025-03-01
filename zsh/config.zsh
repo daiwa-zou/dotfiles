@@ -1,21 +1,5 @@
-# Determine the operating system
-is_macos() {
-  [[ "$(uname)" == "Darwin" ]]
-}
-
-is_linux() {
-  [[ "$(uname)" == "Linux" ]]
-}
-
-# Set colors for `ls` based on the OS
-if is_macos; then
-  # macOS configuration
-  export LSCOLORS="Gxfxcxdxbxegedabagacad"
-  export CLICOLOR=true
-elif is_linux; then
-  # Linux configuration
-  export LS_COLORS="di=1;34:fi=0;37:ln=1;36:pi=40;33:so=1;35:bd=40;33:cd=40;33:or=1;31:mi=1;31:ex=1;32:"
-fi
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
+export CLICOLOR=true
 
 # Load custom functions and completion scripts
 fpath=($DOTFILES/functions $fpath)
