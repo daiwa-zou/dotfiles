@@ -1,4 +1,4 @@
-# Brewfile for macOS
+# Brewfile
 tap 'homebrew/bundle'
 
 brew 'git'
