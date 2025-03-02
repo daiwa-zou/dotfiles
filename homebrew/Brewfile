@@ -2,6 +2,8 @@
 tap 'homebrew/bundle'
 
 brew 'git'
+brew 'make'
+brew 'gcc'
 brew 'unzip'
 brew 'ripgrep'
 brew 'xclip'
