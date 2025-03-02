@@ -9,6 +9,7 @@ This repository contains my personal configuration files for various tools and a
 ## Features
 
 - Configurations and plugins for [zsh]
+  - `zsh` [plugins]<https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins>
 - Custom scripts for productivity
 - Homebrew setup
 - `neovim` settings with plugins
