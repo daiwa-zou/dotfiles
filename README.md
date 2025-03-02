@@ -1,4 +1,4 @@
-# My Dotffiles
+# My Dotfiles
 
 This repository contains my personal configuration files for various tools and applications.
 This setup provides a simple framework to create and modify a custom workspace.
