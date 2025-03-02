@@ -34,20 +34,21 @@ install_oh_my_zsh() {
 
     # Check if Oh My Zsh is already installed
     if [ -d "$omz_dir" ]; then
-        info "Oh My Zsh is already installed at $omz_dir."
+        success "Oh My Zsh is already installed at $omz_dir."
+        exit 0
     fi
 
-    echo "Installing Oh My Zsh..."
+    info "Installing Oh My Zsh..."
 
     # Attempt to install using curl or wget
     if command -v curl > /dev/null 2>&1; then
-        if curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh -s -- --unattended; then
+        if curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh -s -- --unattended > /dev/null; then
             success "Oh My Zsh installed successfully."
         else
             fail "Failed to install Oh My Zsh using curl."
         fi
     elif command -v wget > /dev/null 2>&1; then
-        if wget --quiet https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O - | sh -s -- --unattended; then
+        if wget --quiet https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O - | sh -s -- --unattended > /dev/null; then
             success "Oh My Zsh installed successfully."
         else
             fail "Failed to install Oh My Zsh using wget."

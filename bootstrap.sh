@@ -1,7 +1,12 @@
 #!/bin/bash
-set -e
-
 source lib/helper.sh
+
+#
+# Bootstrap
+#
+# The main entrypoint for the setup of user configuration.
+
+set -e
 
 # Set script parent directory as DOTFILES_ROOT
 DOTFILES_ROOT=$(pwd -P)
@@ -53,7 +58,7 @@ install_dotfiles() {
 run_installers() {
     # Find the installers and run them iteratively, exclude scripts directory
     find . -name 'install.sh' -not -path './scripts/*' -print0 | while IFS= read -r -d '' installer; do
-        echo "Running installer: $installer"
+        info "Running installer: $installer"
         if ! sh -c "$installer"; then
             fail "Failed to run installer $installer"
         fi

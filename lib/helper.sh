@@ -9,7 +9,6 @@ success() {
 
 fail() {
     printf "\r\033[2K  [\033[0;31mFAIL\033[0m] %s\n" "$1"
-    echo ''
     exit 1
 }
 

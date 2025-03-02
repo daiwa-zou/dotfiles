@@ -46,7 +46,7 @@ setup_gitconfig () {
       fail "Failed to generate git configuration." >&2
     fi
   else
-    info "Git configuration already set up."
+    success "Git configuration already set up."
   fi
 }
 
