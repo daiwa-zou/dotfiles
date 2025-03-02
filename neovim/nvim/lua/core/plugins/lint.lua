@@ -8,7 +8,7 @@ return {
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
         bash = { 'shellcheck' },
-        go = { 'golangci-lint' },
+        go = { 'golangcilint' },
       }
 
       lint.linters_by_ft = lint.linters_by_ft or {}
