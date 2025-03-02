@@ -1,0 +1,3 @@
+print_message() {
+    echo $@
+}
