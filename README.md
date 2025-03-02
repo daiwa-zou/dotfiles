@@ -12,7 +12,7 @@ Ensure you have the following installed before proceeding:
 
 ## Features
 
-- **Zsh setup and configuration*
+- **Zsh setup and configuration**
   - Update `zsh/zshrc.lnk` for zsh configurations.
   - Reference [plugins](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins) for more zsh plugin information.
 - **Homebrew setup**
