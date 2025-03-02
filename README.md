@@ -12,13 +12,19 @@ Ensure you have the following installed before proceeding:
 
 ## Features
 
-- **zsh configurations and plugins**
-  - zsh [plugins](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins)
-- **Custom scripts**
+- **Zsh setup and configuration*
+  - Update `zsh/zshrc.lnk` for zsh configurations.
+  - Reference [plugins](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins) for more zsh plugin information.
 - **Homebrew setup**
+  - Update `homebrew/Brewfile` to install packages.
 - **Neovim setup and configuration**
+  - Update `neovim/nvim` for neovim configurations.
 - **Tmux setup and configuration**
+  - Update `tmux/tmux.conf.lnk` for tmux configurations.
 - **Git configuration**
+  - Update `git/**` files for git configurations.
+- **Custom scripts**
+  - Custom bash functions can be placed under `functions` directory and will be loaded.
 
 ## Installation
 
