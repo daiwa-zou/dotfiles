@@ -25,13 +25,13 @@ setup_gitconfig () {
     echo -n " - What is your GitHub author name? "
     read -r git_authorname
     if [ -z "$git_authorname" ]; then
-      fail "Author name cannot be empty." >&2
+      fail "Author name cannot be empty" >&2
     fi
 
     echo -n " - What is your GitHub author email? "
     read -r git_authoremail
     if [ -z "$git_authoremail" ]; then
-      fail "Author email cannot be empty." >&2
+      fail "Author email cannot be empty" >&2
     fi
 
     # Generate the git configuration file
@@ -41,12 +41,12 @@ setup_gitconfig () {
         "$example_file" > "$config_file"
 
     if [ $? -eq 0 ]; then
-      success "Git configuration setup completed successfully."
+      success "Git configuration setup completed successfully"
     else
-      fail "Failed to generate git configuration." >&2
+      fail "Failed to generate git configuration" >&2
     fi
   else
-    success "Git configuration already set up."
+    success "Git configuration already set up"
   fi
 }
 
