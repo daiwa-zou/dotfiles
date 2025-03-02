@@ -17,6 +17,7 @@ ZSH_THEME="linuxonly"
 
 # Zsh plugins
 plugins=(
+  colored-man-pages
   brew
   hitchhiker
   colorize
