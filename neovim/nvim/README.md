@@ -1,14 +1,12 @@
 # Neovim
 
-## Description
-
 Basic neovim configuration for personal use
 
 ## Installation
 
 ### Install Neovim
 
-horus.nvim targets *only* the latest
+Targets *only* the latest
 ['stable'](https://github.com/neovim/neovim/releases/tag/stable) and latest
 ['nightly'](https://github.com/neovim/neovim/releases/tag/nightly) of Neovim.
 If you are experiencing issues, please make sure you have the latest versions.
