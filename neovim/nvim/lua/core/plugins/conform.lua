@@ -35,6 +35,8 @@ return {
       python = { 'isort', 'black' },
       json = { 'jq' },
       markdown = { 'markdownlint' },
+      go = { 'gofumpt' },
+      rust = { 'rustfmt' },
     },
   },
 }
