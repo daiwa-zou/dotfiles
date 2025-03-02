@@ -1,6 +1,24 @@
-# Installation
+# My Dotffiles
+
+This repository contains my personal configuration files for various tools and applications.
+
+## Depedencies
+
+- `curl` or `wget`
+
+## Features
+
+- Configurations and plugins for [zsh]
+- Custom scripts for productivity
+- Homebrew setup
+- `neovim` settings with plugins
+- `tmux` configurations
+- `git` settings and aliases
+
+## Installation
+
+Run the following command:
+
 ```bash
-git clone https://github.com/daiwa-zou/dotfiles.git .dotfiles
-cd .dotfiles
-./bootstrap.sh
+git clone https://github.com/daiwa-zou/dotfiles.git .dotfiles && cd .dotfiles && ./bootstrap.sh
 ```
