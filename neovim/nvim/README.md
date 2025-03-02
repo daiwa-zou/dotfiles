@@ -1,11 +1,4 @@
-# horus.nvim
-
-```ascii
-     /\_/\
-    ((@v@))
-    ():::()
-     VV-VV
-```
+# Neovim
 
 ## Description
 
@@ -29,9 +22,3 @@ External Requirements:
 - Clipboard tool (xclip/xsel/win32yank or other depending on platform)
 - A [Nerd Font](https://www.nerdfonts.com/): optional, provides various icons
   - if you have it set `vim.g.have_nerd_font` in `init.lua` to true
-
-### Install Configuration
-
-```sh
-git clone git@github.com:daiwa-zou/horus.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
-```
