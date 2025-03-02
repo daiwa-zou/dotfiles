@@ -1,0 +1,42 @@
+# remap prefix from 'C-b' to 'C-a'
+unbind C-b
+unbind C-space
+set-option -g prefix C-space
+bind-key C-space send-prefix
+
+# set mouse on
+set -g mouse on
+
+# increase history
+set-option -g history-limit 5000
+
+# configure numbering scheme for windows and panes
+set -g base-index 1
+setw -g pane-base-index 1
+set -g renumber-windows on
+
+# split panes using | and -
+bind | split-window -hc "#{pane_current_path}"
+bind - split-window -vc "#{pane_current_path}"
+bind-key "|" split-window -h -c "#{pane_current_path}"
+bind-key "\\" split-window -fh -c "#{pane_current_path}"
+bind-key "-" split-window -v -c "#{pane_current_path}"
+bind-key "_" split-window -fv -c "#{pane_current_path}"
+unbind '"'
+unbind %
+
+# reload config file (change file location to your the tmux.conf you want to use)
+bind r source-file ~/.tmux.conf
+
+# jump to marked
+bind \` switch-client -t'{marked}'
+
+# swap windows
+bind -r "<" swap-window -d -t -1
+bind -r ">" swap-window -d -t +1
+
+# keep current path for new window
+bind c new-window -c "#{pane_current_path}"
+
+# don't rename windows automatically
+set-option -g allow-rename off
