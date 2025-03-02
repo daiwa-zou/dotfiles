@@ -25,6 +25,7 @@ plugins=(
   extract
   git
   tmux
+  fancy-ctrl-z
 )
 
 # Initialize Oh My Zsh
