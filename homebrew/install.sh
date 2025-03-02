@@ -1,8 +1,11 @@
 #!/bin/sh
+
+source lib/helper.sh
+
 #
 # Homebrew
 #
-# This installs Homebrew on macOS or Linux if it's not already installed.
+# This installs Homebrew on macOS if it's not already installed.
 
 # Function to check if Homebrew is installed
 check_brew() {
@@ -13,21 +16,36 @@ check_brew() {
 install_package_manager() {
   # Ensure homebrew for macOS
   if [ "$(uname)" = "Darwin" ]; then
-    echo "Installing Homebrew..."
+    info "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  # TODO: Ensure apt-get for linux
   else
-    echo "Unsupported OS: $(uname)"
-    exit 1
+    fail "Unsupported OS: $(uname)"
   fi
+}
+
+# Install packages using Brewfile
+install_packages() {
+    info "› brew bundle"
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        # macOS
+        info "Installing packages for macOS..."
+        if ! command -v brew > /dev/null 2>&1; then
+            fail "Homebrew is not installed. Please install Homebrew first."
+        fi
+        brew bundle --file=homebrew/Brewfile
+    else
+        fail "Unsupported OS: $OSTYPE"
+    fi
 }
 
 # Main script execution
 if ! check_brew; then
   install_homebrew
 else
-  echo "Homebrew is already installed."
+  info "Homebrew is already installed."
 fi
+
+install_packages
 
 exit 0
 
