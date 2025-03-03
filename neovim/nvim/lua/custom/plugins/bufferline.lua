@@ -10,10 +10,11 @@ return {
     local bufferline = require 'bufferline'
     bufferline.setup {
       options = {
-        style_preset = bufferline.style_preset.minimal,
+        style_preset = bufferline.style_preset.default,
         separator_style = 'slant',
         sort_by = 'directory',
         diagnostics = 'nvim_lsp',
+        always_show_bufferline = true,
       },
     }
   end,
