@@ -80,3 +80,9 @@ ZSH_TMUX_DEFAULT_SESSION_NAME="workspace"
 if command -v hitchhiker_cow > /dev/null 2>&1; then
     hitchhiker_cow
 fi
+
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/daiwazou/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
