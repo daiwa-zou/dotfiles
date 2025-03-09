@@ -11,6 +11,17 @@ return {
         go = { 'golangcilint' },
       }
 
+      local golangcilint = require 'lint.linters.golangcilint'
+      golangcilint.append_fname = true
+      golangcilint.args = {
+        'run',
+        '--issues-exit-code=0',
+        '--out-format',
+        'json',
+        '--timeout',
+        '5m',
+      }
+
       lint.linters_by_ft = lint.linters_by_ft or {}
 
       local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
