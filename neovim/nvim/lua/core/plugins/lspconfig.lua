@@ -65,30 +65,7 @@ return {
       dockerls = {},
       docker_compose_language_service = {},
       jsonls = {},
-      pyright = {
-        settings = {
-          pyright = {
-            plugins = {
-              configurationSources = { 'pylint' },
-              pylint = {
-                enabled = true,
-              },
-            },
-          },
-          python = {
-            venvPath = './',
-            venv = 'venv',
-            pythonPath = 'python3',
-            analysis = {
-              autoImportCompletions = true,
-            },
-          },
-        },
-      },
       lua_ls = {
-        -- cmd = {...},
-        -- filetypes = { ...},
-        -- capabilities = {},
         settings = {
           Lua = {
             completion = {
@@ -105,14 +82,10 @@ return {
     vim.list_extend(ensure_installed, {
       -- Formatter
       'stylua',
-      'black',
-      'isort',
       'jq',
       'gofumpt',
       'rustfmt',
       -- Linter
-      'pydocstyle',
-      'mypy',
       'markdownlint',
       'golangci-lint',
     })

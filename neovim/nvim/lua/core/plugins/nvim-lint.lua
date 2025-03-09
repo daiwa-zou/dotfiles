@@ -12,7 +12,6 @@ return {
       }
 
       lint.linters_by_ft = lint.linters_by_ft or {}
-      lint.linters_by_ft['python'] = { 'pydocstyle' }
 
       local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
       vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
@@ -21,6 +20,10 @@ return {
           lint.try_lint()
         end,
       })
+
+      vim.keymap.set('n', '<leader>local', function()
+        lint.try_lint()
+      end, { desc = 'Trigger linting for current file' })
     end,
   },
 }
