@@ -32,6 +32,7 @@ return {
       json = { 'jq' },
       go = { 'gofumpt' },
       rust = { 'rustfmt' },
+      protobuf = { 'pbls' },
     },
   },
 }

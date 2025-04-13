@@ -7,6 +7,9 @@ export ZSH=$HOME/.oh-my-zsh
 # Path to the dotfiles directory
 export DOTFILES=$HOME/.dotfiles
 
+# Set Golang private repo
+export GOPRIVATE=github.com/daiwa-zou/*
+
 # Source environment variables from ~/.localrc if it exists
 if [[ -f ~/.localrc ]]; then
   source ~/.localrc

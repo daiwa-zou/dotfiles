@@ -71,6 +71,7 @@ return {
       },
     })
 
+    local util = require 'lspconfig.util'
     local servers = {
       dockerls = {},
       docker_compose_language_service = {},
@@ -86,6 +87,13 @@ return {
       },
       gopls = {},
       rust_analyzer = {},
+      pbls = {
+        default_config = {
+          cmd = { 'pbls' },
+          filetypes = { 'proto' },
+          root_dir = util.root_pattern('.pbls.toml', '.git'),
+        },
+      },
     }
     require('mason').setup()
     local ensure_installed = vim.tbl_keys(servers or {})

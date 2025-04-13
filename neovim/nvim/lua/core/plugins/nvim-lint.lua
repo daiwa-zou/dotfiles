@@ -9,6 +9,7 @@ return {
         markdown = { 'markdownlint' },
         bash = { 'shellcheck' },
         go = { 'golangcilint' },
+        protobuf = { 'pbls' },
       }
 
       local golangcilint = require 'lint.linters.golangcilint'
