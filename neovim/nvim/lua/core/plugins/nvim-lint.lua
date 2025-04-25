@@ -1,5 +1,4 @@
 return {
-
   { -- Linting
     'mfussenegger/nvim-lint',
     event = { 'BufReadPre', 'BufNewFile' },
@@ -12,15 +11,16 @@ return {
         protobuf = { 'pbls' },
       }
 
-      local golangcilint = require 'lint.linters.golangcilint'
-      golangcilint.append_fname = true
-      golangcilint.args = {
+      local goci = lint.linters.golangcilint
+
+      goci.args = {
         'run',
+        '--output.json.path=stdout',
         '--issues-exit-code=0',
-        '--out-format',
-        'json',
-        '--timeout',
-        '5m',
+        '--show-stats=false',
+        function()
+          return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ':h')
+        end,
       }
 
       lint.linters_by_ft = lint.linters_by_ft or {}
