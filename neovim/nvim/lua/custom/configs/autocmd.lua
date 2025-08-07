@@ -19,3 +19,8 @@ vim.keymap.set('n', '<leader>rI', ':Refactor inline_func <Enter>')
 vim.keymap.set('n', '<leader>rb', ':Refactor extract_block')
 vim.keymap.set('n', '<leader>rbf', ':Refactor extract_block_to_file')
 vim.keymap.set('n', '<leader>cs', '<cmd>AerialToggle!<CR>')
+vim.keymap.set('n', '<leader>;', function()
+  local cursor = vim.api.nvim_win_get_cursor(0)
+  vim.cmd 'norm A;'
+  vim.api.nvim_win_set_cursor(0, cursor)
+end, { noremap = true, silent = true })
