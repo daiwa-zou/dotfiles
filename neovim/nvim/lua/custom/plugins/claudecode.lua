@@ -1,10 +1,6 @@
 return {
   'coder/claudecode.nvim',
-  config = function()
-    require('claudecode').setup {
-      terminal = { provider = 'native' },
-    }
-  end,
+  config = true,
   keys = {
     { '<leader>ac', '<cmd>ClaudeCode<cr>',            desc = 'Toggle Claude' },
     { '<leader>af', '<cmd>ClaudeCodeFocus<cr>',       desc = 'Focus Claude' },
