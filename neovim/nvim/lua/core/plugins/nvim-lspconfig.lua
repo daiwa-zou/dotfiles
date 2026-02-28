@@ -11,7 +11,7 @@ return {
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
     { 'j-hui/fidget.nvim', opts = {} },
 
-    -- Allows extra capabilities provided by nvim-cmp
+    -- Provides LSP capabilities for blink.cmp
     'saghen/blink.cmp',
   },
   config = function()
@@ -22,12 +22,12 @@ return {
           mode = mode or 'n'
           vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
-        map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-        map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-        map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-        map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
-        map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-        map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+        map('gd', require('fzf-lua').lsp_definitions, '[G]oto [D]efinition')
+        map('gr', require('fzf-lua').lsp_references, '[G]oto [R]eferences')
+        map('gI', require('fzf-lua').lsp_implementations, '[G]oto [I]mplementation')
+        map('<leader>D', require('fzf-lua').lsp_typedefs, 'Type [D]efinition')
+        map('<leader>ds', require('fzf-lua').lsp_document_symbols, '[D]ocument [S]ymbols')
+        map('<leader>ws', require('fzf-lua').lsp_live_workspace_symbols, '[W]orkspace [S]ymbols')
         map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
         map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
         map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -86,7 +86,6 @@ return {
         },
       },
       gopls = {},
-      rust_analyzer = {},
       pbls = {
         default_config = {
           cmd = { 'pbls' },
@@ -102,10 +101,11 @@ return {
       'stylua',
       'jq',
       'gofumpt',
-      'rustfmt',
       -- Linter
       'markdownlint',
       'golangci-lint',
+      -- Debug adapter
+      'codelldb',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
