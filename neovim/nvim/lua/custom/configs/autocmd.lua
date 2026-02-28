@@ -24,3 +24,10 @@ vim.keymap.set('n', '<leader>;', function()
   vim.cmd 'norm A;'
   vim.api.nvim_win_set_cursor(0, cursor)
 end, { noremap = true, silent = true })
+vim.keymap.set('i', 'jj', "<c-o>:call search('}\\|)\\|]\\|>\\|\"', 'cW')<cr><Right>")
+-- Saving and quiting
+vim.keymap.set('n', '<leader>x', ':wq<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>w', ':w<CR>', { noremap = true })
+-- Text editing
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")

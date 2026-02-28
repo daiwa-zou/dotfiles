@@ -9,8 +9,9 @@ source lib/helper.sh
 
 set -e
 
-# Set script parent directory as DOTFILES_ROOT
+# Set script parent directory as DOTFILES_ROOT and export for sub-installers
 DOTFILES_ROOT=$(pwd -P)
+export DOTFILES_ROOT
 
 # Find all files with .lnk extension and link them to user home directory
 install_dotfiles() {

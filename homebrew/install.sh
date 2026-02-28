@@ -25,14 +25,12 @@ install_package_manager() {
 
 # Install packages using Brewfile
 install_packages() {
-    info "Brew bundle install..."
+    info "Installing packages from Brewfile..."
     if [[ "$OSTYPE" == "darwin"* ]]; then
-        # macOS
-        info "Installing packages for macOS..."
         if ! command -v brew > /dev/null 2>&1; then
             fail "Homebrew is not installed. Please install Homebrew first."
         fi
-        brew bundle --file=homebrew/Brewfile > /dev/null
+        brew bundle --file=homebrew/Brewfile
         success "All packages installed."
     else
         fail "Unsupported OS: $OSTYPE"
@@ -41,7 +39,7 @@ install_packages() {
 
 # Main script execution
 if ! check_brew; then
-  install_homebrew
+  install_package_manager
 else
   success "Homebrew is already installed."
 fi

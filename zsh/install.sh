@@ -59,9 +59,7 @@ install_oh_my_zsh() {
 
 # Main script execution
 install_oh_my_zsh
-if ! check_zsh_installed; then
-    # Set zsh as the default shell
-    set_zsh_as_default
-fi
+check_zsh_installed
+set_zsh_as_default
 
 exit 0

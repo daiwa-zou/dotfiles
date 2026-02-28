@@ -1,4 +1,4 @@
-# Local/private config goes in the include
+# Local/private config goes in the include.
 [include]
     path = ~/.gitconfig.local
 
@@ -52,4 +52,6 @@
 [init]
     defaultBranch = main
 [oh-my-zsh]
-	git-commit-alias = 6e7ac0544e71c7b777746cb50f70de68c6495b86
+	git-commit-alias = 5c4f27b7166360bd23709f24642b247eac30a147
+[url "git@github.com:"]
+	insteadOf = https://github.com/

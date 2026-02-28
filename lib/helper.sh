@@ -31,7 +31,7 @@ link_file() {
 
     # If the destination exists and is not a symbolic link, remove it
     if [ -e "$destination" ] && [ ! -L "$destination" ]; then
-        rm -rf "$destination"
+        rm -f "$destination"
         if [ $? -ne 0 ]; then
             fail "Failed to remove existing file $destination"
         fi

@@ -19,7 +19,7 @@ check_neovim_configured() {
 }
 
 configure_neovim() {
-    local local_nvim_configs="$DOTFILES/neovim/nvim"
+    local local_nvim_configs="${DOTFILES:-$DOTFILES_ROOT}/neovim/nvim"
     info "Configuring neovim..."
     link_file "$local_nvim_configs" "$NVIM_DIR"
     success "Configured neovim"
